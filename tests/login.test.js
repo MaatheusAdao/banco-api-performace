@@ -4,14 +4,15 @@ const postLogin = JSON.parse(open('../fixtures/postLogin.json'))
 
 export const options = {
   
-  stages: [
+  /*stages: [
     {duration: '10s', target: 10 },
     {duration: '20s', target: 10 },
     {duration: '10', target: 30 },
     {duration: '20', target: 30 },
     {duration: '20', target: 0 }
 
-  
+  ],*/
+interation: 1,
   thresholds: {
     http_req_duration: ['p(90)<3000', 'max<5000'],
     http_req_failed: ['rate<0.01'],
@@ -19,17 +20,20 @@ export const options = {
 };
 
 export default function () {
+
   const url = 'http://localhost:3000/login';
-
-  const payload = JSON.stringify(postLogin);
-
-  const params = {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  };
-
-  const res = http.post(url, payload, params);
+  
+    const payload = JSON.stringify(postLogin);
+  
+    const params = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+  
+    const res = http.post(url, payload, params);
+  
+  
 
   check(res, {
     'Validar que o Status é 200': (r) => r.status === 200,
