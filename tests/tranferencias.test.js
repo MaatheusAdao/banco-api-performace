@@ -4,7 +4,12 @@ import { obterToken } from '../Helpers/authenticacao.js';
 import {pegarBaseURL} from '../utiils/variaveis.js'
 
 export const options = {
-iteration: 1,
+  stages: [
+    {duration: '10s', target: 10 },
+    {duration: '20s', target: 10 }
+
+
+  ],
 };
 
 export default function() {
